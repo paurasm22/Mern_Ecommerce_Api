@@ -33,7 +33,7 @@ export const login=async(req,res)=>{
       const token = jwt.sign({userId:user._id},"@#$$##%%",{
         expiresIn:'365d'
       })
-      res.json({message:`Matched Credentials ${user.name}`,token,success:true})
+      res.json({message:`Matched Credentials ${user.name}`,token,success:true,admin:user.admin})
   } catch (error) {
     res.json({message:error.message})
   }

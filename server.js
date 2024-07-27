@@ -7,6 +7,8 @@ import addressRouter from './Routes/address.js'
 import bodyParser from 'express'
 import cors from 'cors'
 import paymentRouter from './Routes/payment.js'
+import dotenv from 'dotenv'
+dotenv.config()
 const app = express()
 app.use(bodyParser.json())
 
@@ -36,7 +38,7 @@ app.use('/api/address',addressRouter)
 app.use('/api/payment',paymentRouter)
 
 const port = 1000;
-mongoose.connect("mongodb+srv://paurasmore22:JAiQmVHIXpwvTnKd@cluster0.hfst9dl.mongodb.net/",{
+mongoose.connect(process.env.MONGOOSE_CONNECTION_STRING,{
   dbName:"MernEcommerce"
 }).then(()=>{
   console.log("Connected Sucessfully !")
